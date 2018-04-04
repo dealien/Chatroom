@@ -1,23 +1,25 @@
-var app = require('express')();
-var http = require('http').Server(app);
-var io = require('socket.io')(http);
+ var app = require('express')();
+ var http = require('http').Server(app);
+ var io = require('socket.io')(http);
 
-app.get('/', function(req, res) {
+ app.get('/', function(req, res) {
     res.sendFile(__dirname + '/index.html');
-});
+ });
 
-http.listen(3000, function() {
+ http.listen(3000, function() {
     console.log('listening on *:3000');
-});
+ });
 
-io.on('connection', function(socket) {
-    socket.on('chat message', function(msg) {
-        console.log('message: ' + msg);
-    });
-});
-
-io.on('connection', function(socket) {
-    socket.on('chat message', function(msg) {
+ io.on('connection', function(socket) {
+    var msgs = "these are a bunch of messages for debugging purposes so that I don't need to type out a bunch of random gibberish every time I rerun the script but now that I've written this I've realized that just using simple lipsum would have probably been a lot easier and less time consuming but it's too late now isn't it ggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfs ggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfs ggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfs ggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfs ggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfs ggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfs ggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfs ggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfsggdfsgfdgdgfdgfdgdfs".split(" ");
+    msgs.forEach(function(msg) {
         io.emit('chat message', msg);
     });
-});
+ });
+
+ io.on('connection', function(socket) {
+    socket.on('chat message', function(msg) {
+        console.log('message: ' + msg);
+        io.emit('chat message', msg);
+    });
+ });
